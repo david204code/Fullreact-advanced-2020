@@ -12,7 +12,15 @@ const UseEffectBasics = () => {
     if(value >= 1) {
       document.title = `Blessings(${value})`
     }
-  })
+    // second argument dependency list array AND only runs on initial render if it is empty
+    // pass it the NAME to render on update
+  }, [value]);
+
+  // can have multiple useEffect function
+  useEffect(() => {
+    console.log('second useEffect')
+  }, [])
+
   // This will render FIRST
   console.log('render component');
   return <>
