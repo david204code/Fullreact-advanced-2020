@@ -9,7 +9,9 @@ const UseEffectBasics = () => {
   useEffect(() => {
     // this will render SECOND 
     console.log('call useEffect');
-    document.title = `Blessings(${value})`
+    if(value >= 1) {
+      document.title = `Blessings(${value})`
+    }
   })
   // This will render FIRST
   console.log('render component');
