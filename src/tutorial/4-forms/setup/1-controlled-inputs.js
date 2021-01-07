@@ -10,11 +10,31 @@ const ControlledInputs = () => {
   // state value
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
+  const [people, setPeople] = useState([]);
 
   const handleSubmit = (e) => {
     // prevent page from reloading on submit
     e.preventDefault();
-    console.log('thank you Lord Jesus')
+    // set up a condition to only add to the array if the values are true
+    if(firstName && email) {
+      // create a new object if both values are true
+      // Before ES6
+      // const person = { firstName: firstName, email: email };
+      // ES6!
+      const person = { firstName, email };
+      console.log(person);
+      setPeople((people) => {
+        return(
+          [...people, person]
+        );
+      });
+      // reset form after submit
+      setFirstName('');
+      setEmail('');
+    }
+    else {
+      console.log( 'Praise the Lord');
+    }
   };
 
   return(
