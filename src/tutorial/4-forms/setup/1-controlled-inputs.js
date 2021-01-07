@@ -7,6 +7,9 @@ import React, { useState } from 'react';
 // value, onChange
 
 const ControlledInputs = () => {
+  // state value
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (e) => {
     // prevent page from reloading on submit
@@ -20,13 +23,13 @@ const ControlledInputs = () => {
         <form className ="form" onSubmit ={handleSubmit}>
           <div className ="form-control">
             <label htmlFor ="firstName">Name : </label>
-            <input type ="text" id ="firstName" name ="firstName"/>
+            <input type ="text" id ="firstName" name ="firstName" value ={firstName}/>
           </div>
           <div className ="form-control">
             <label htmlFor ="email"></label>
-            <input type ="text" id ="email" name ="email"/>
+            <input type ="text" id ="email" name ="email" value ={email}/>
           </div>
-          {/* can do inline onClick function, same concept */}
+          {/* can also be inline onClick function, same concept */}
           {/* <button type ="submit" onClick ={handleSubmit}>Add Person</button> */}
           <button type ="submit" onClick ={handleSubmit}>Add Person</button>
         </form>
