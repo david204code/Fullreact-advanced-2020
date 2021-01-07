@@ -21,7 +21,7 @@ const ControlledInputs = () => {
       // Before ES6
       // const person = { firstName: firstName, email: email };
       // ES6!
-      const person = { firstName, email };
+      const person = { id: new Date().getTime().toString(), firstName, email };
       console.log(person);
       setPeople((people) => {
         return(
@@ -66,6 +66,19 @@ const ControlledInputs = () => {
           {/* <button type ="submit" onClick ={handleSubmit}>Add Person</button> */}
           <button type ="submit" onClick ={handleSubmit}>Add Person</button>
         </form>
+        {
+          people.map((person, index) => {
+            // destruture
+            const { id, firstName, email } = person;
+            return(
+              <div className ="item" key ={id}>
+                <h4>{firstName}</h4>
+                <p>{email}</p>
+                <p>{id}</p>
+              </div>
+            )
+          })
+        }
       </article>
     </>
   ); 
