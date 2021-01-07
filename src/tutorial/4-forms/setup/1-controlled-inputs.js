@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 // JS
 // const input = document.getElementById('myText');
 // const inputValue = input.value
@@ -6,7 +7,23 @@ import React, { useState } from 'react';
 // value, onChange
 
 const ControlledInputs = () => {
-  return <h1>controlled inputs</h1>;
+  return(
+    <>
+      <article>
+        <form className ="form">
+          <div className ="form-control">
+            <label htmlFor ="firstName">Name : </label>
+            <input type ="text" id ="firstName" name ="firstName"/>
+          </div>
+          <div className ="form-control">
+            <label htmlFor ="email"></label>
+            <input type ="text" id ="email" name ="email"/>
+          </div>
+          <button type ="submit">Add Person</button>
+        </form>
+      </article>
+    </>
+  ); 
 };
 
 export default ControlledInputs;
