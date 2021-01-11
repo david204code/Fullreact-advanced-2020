@@ -9,18 +9,20 @@ import React, { useState } from 'react';
 const ControlledInputs = () => {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
   const [people, setPeople] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (firstName && email) {
-      const person = { id: new Date().getTime().toString(), firstName, email };
+      const person = { id: new Date().getTime().toString(), firstName, email, age };
       console.log(person);
       setPeople((people) => {
         return [...people, person];
       });
       setFirstName('');
       setEmail('');
+      setAge('');
     } else {
       console.log('empty values');
     }
@@ -47,6 +49,16 @@ const ControlledInputs = () => {
               name='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className ="form-control">
+            <label htmlFor ="age">Age : </label>
+            <input
+              type ="text"
+              id ="age"
+              name ="age"
+              value ={age}
+              onChange ={(e) => setAge(e.target.value)}
             />
           </div>
           <button type='submit'>add person</button>
