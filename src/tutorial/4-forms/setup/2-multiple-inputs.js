@@ -25,6 +25,14 @@ const ControlledInputs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Check the attrbitues are more than empty string
+    if(person.firstName && person.email && person.age){
+      // create a new person
+      const newPerson = {...person, id: new Date().getTime().toString()}
+      //  add person to setPeople, spread operator is coping the person from the state
+      setPeople([...people, newPerson]);
+      setPerson({firstName: '', email: '', age: ''})
+    }
   };
 
   return (
@@ -64,10 +72,11 @@ const ControlledInputs = () => {
           <button type='submit' onClick ={handleSubmit}>add person</button>
         </form>
         {people.map((person, index) => {
-          const { id, firstName, email } = person;
+          const { id, firstName, email, age } = person;
           return (
             <div className='item' key={id}>
               <h4>{firstName}</h4>
+              <p>{age}</p>
               <p>{email}</p>
             </div>
           );
