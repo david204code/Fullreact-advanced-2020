@@ -17,15 +17,15 @@ const ContextAPI = () => {
   return (
     <>
     {/* can use useContext to access the value */}
-      <PersonContext.Provider value ="Hello">
+      <PersonContext.Provider value ={{removePerson}}>
         <h3>prop drilling</h3>
-        <List people={people} removePerson={removePerson} />
+        <List people={people} />
       </PersonContext.Provider>
     </>
   );
 };
 
-const List = ({ people, removePerson }) => {
+const List = ({ people }) => {
   return (
     <>
       {people.map((person) => {
@@ -33,7 +33,6 @@ const List = ({ people, removePerson }) => {
           <SinglePerson
             key={person.id}
             {...person}
-            removePerson={removePerson}
           />
         );
       })}
@@ -41,9 +40,9 @@ const List = ({ people, removePerson }) => {
   );
 };
 
-const SinglePerson = ({ id, name, removePerson }) => {
+const SinglePerson = ({ id, name }) => {
   // access the value in the root component using useContext hook
-  const data = useContext(PersonContext);
+  const { removePerson } = useContext(PersonContext);
   console.log(data);
   return (
     <div className='item'>
