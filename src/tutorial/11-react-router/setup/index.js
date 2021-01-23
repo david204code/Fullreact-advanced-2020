@@ -27,8 +27,10 @@ const ReactRouterSetup = () => {
           <People />
         </Route>
 
-        <Route path ="person">
-          <Person />
+        {/* url parameters with placeholders*/}
+        <Route path ="/person/:id"
+          children ={<Person />}
+        >
         </Route>
 
         <Route path ="*">
