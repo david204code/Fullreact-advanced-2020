@@ -22,17 +22,25 @@ const Index = () => {
   )
 }
 
-const BigList = ({ products }) => {
+const BigList = React.memo(({ products }) => {
+  useEffect(() => {
+    console.count("Jesus is Lord!");
+  });
+
   return (
     <section className='products'>
       {products.map((product) => {
         return <SingleProduct key={product.id} {...product}></SingleProduct>
       })}
     </section>
-  )
-}
+  );
+});
 
 const SingleProduct = ({ fields }) => {
+  useEffect(() => {
+    console.count("Amen!");
+  });
+
   let { name, price } = fields
   price = price / 100
   const image = fields.image[0].url
